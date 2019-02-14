@@ -104,6 +104,21 @@ class LList(object):
             p = p.next
         print('')
 
+    # 单链表反转
+    def rev(self):
+        if self._head is None:
+            return
+        pre = self._head
+        cur = pre.next
+        pre.next = None
+        while cur.next:
+            temp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = temp
+        self._head = cur
+        cur.next = pre
+
 
 # 双向链表基本操作
 
@@ -193,6 +208,23 @@ class DLList(LList):
         p.next.next.prev = p
         p.next = p.next.next
         self.count -= 1
+
+    # 双向链表反转
+    def rev(self):
+        if self._head is None:
+            return
+        p = self._head
+        while p.next:
+            temp = p.next
+            p.next = p.prev
+            p.prev = temp
+            p = p.prev
+
+        p.next = p.prev  # 最后一个p节点
+        p.prev = None
+        self._head.prev = self._head.next
+        self._rear = self._head
+        self._head = p
 
 
 
