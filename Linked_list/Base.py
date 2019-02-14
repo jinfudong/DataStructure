@@ -95,6 +95,7 @@ class LList(object):
     # 输出链表
     def print_all(self):
         p = self._head
+
         if p is None:
             raise Exception('链表为空')
         while p is not None:
